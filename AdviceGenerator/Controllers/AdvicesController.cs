@@ -3,7 +3,7 @@ using AdviceGenerator.Models;
 
 namespace AdviceGenerator.Controllers
 {
-  public class AdviceController : Controller
+  public class AdvicesController : Controller
   {
     public IActionResult Random()
     {
@@ -12,7 +12,7 @@ namespace AdviceGenerator.Controllers
     }
     public IActionResult Searchable(string searchString)
     {
-      var searchableAdvice = Advice.GetSeachableAdvices(searchString, EnvironmentVariables.ApiKey);
+      var searchableAdvice = Advice.GetSearchableAdvices(searchString, EnvironmentVariables.ApiKey);
       return View(searchableAdvice);
     }
   }
