@@ -6,40 +6,31 @@ namespace AdviceGenerator.Models
 {
   public class Advice
   {
+    public JObject Contents { get; set; }
+    public JArray Quotes { get; set; }
     public string Quote { get; set; }
-    public string Contents {get; set;}
+    public string Query { get; set; }
 
-    public string Author { get; set; }
-    public static Advice GetAdvices(string apiKey)
+    public static Advice GetAdvices()
     {
-      var apiCallTask = ApiHelper.ApiRandomCall(apiKey);
+      var apiCallTask = ApiHelper.ApiCall();
       var result = apiCallTask.Result;
 
       JObject jsonResponse = JsonConvert.DeserializeObject<JObject>(result);
-      Advice MyAdvice = JsonConvert.DeserializeObject<Advice>(jsonResponse.ToString());
-
-      return MyAdvice;
+      Advice adviceList = JsonConvert.DeserializeObject<Advice>(jsonResponse.ToString());
+      return adviceList;
     }
-    // public static Animal GetDetails(int id)
+
+    // public static Advice GetSearchableAdvices(string searchTerm, string apiKey)
     // {
-    //   var apiCallTask = ApiHelper.Get(id);
+    //   var apiCallTask = ApiHelper.ApiSearchCall(searchTerm, apiKey);
     //   var result = apiCallTask.Result;
 
     //   JObject jsonResponse = JsonConvert.DeserializeObject<JObject>(result);
-    //   Animal animal = JsonConvert.DeserializeObject<Animal>(jsonResponse.ToString());
+    //   Advice MyAdvice = JsonConvert.DeserializeObject<Advice>(jsonResponse.ToString());
 
-    //   return animal;
+    //   return MyAdvice;
     // }
-
-    public static Advice GetSearchableAdvices(string searchTerm, string apiKey)
-    {
-      var apiCallTask = ApiHelper.ApiSearchCall(searchTerm, apiKey);
-      var result = apiCallTask.Result;
-
-      JObject jsonResponse = JsonConvert.DeserializeObject<JObject>(result);
-      Advice MyAdvice = JsonConvert.DeserializeObject<Advice>(jsonResponse.ToString());
-
-      return MyAdvice;
-    }
+  
   }
 }

@@ -2,7 +2,7 @@ namespace AdviceGenerator.Models
 {
     public static class EnvironmentVariables
     {
-        public static string ApiKey = "_0CPTmwZTI50tLpBImtelQeF";
+        public static string ApiKeyQuote = "_0CPTmwZTI50tLpBImtelQeF";
     }
 }
 

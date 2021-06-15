@@ -1,19 +1,26 @@
 using Microsoft.AspNetCore.Mvc;
 using AdviceGenerator.Models;
+using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Linq;
+using System.Threading.Tasks;
+
 
 namespace AdviceGenerator.Controllers
 {
   public class AdvicesController : Controller
   {
-    public IActionResult Random()
+    public IActionResult Index()
     {
-      var randomAdvice = Advice.GetAdvices(EnvironmentVariables.ApiKey);
-      return View(randomAdvice);
+      var allAdvices = Advice.GetAdvices();
+      return View(allAdvices);
     }
-    public IActionResult Searchable(string searchString)
-    {
-      var searchableAdvice = Advice.GetSearchableAdvices(searchString, EnvironmentVariables.ApiKey);
-      return View(searchableAdvice);
-    }
+    // public IActionResult Search(string searchString)
+    // {
+    //   var allAdvices = Advice.GetAdvices();
+    //   var results = allAdvices.Where(a => a.Query.Contains(searchString));
+    //   return View(results);
+    // }
   }
 }
