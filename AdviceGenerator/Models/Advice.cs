@@ -31,17 +31,5 @@ namespace AdviceGenerator.Models
       Advice searchAdviceList = JsonConvert.DeserializeObject<Advice>(jsonResponse.ToString());
       return searchAdviceList;
     }
-
-    // public static Advice GetSearchableAdvices(string searchTerm, string apiKey)
-    // {
-    //   var apiCallTask = ApiHelper.ApiSearchCall(searchTerm, apiKey);
-    //   var result = apiCallTask.Result;
-
-    //   JObject jsonResponse = JsonConvert.DeserializeObject<JObject>(result);
-    //   Advice MyAdvice = JsonConvert.DeserializeObject<Advice>(jsonResponse.ToString());
-
-    //   return MyAdvice;
-    // }
-
   }
 }
