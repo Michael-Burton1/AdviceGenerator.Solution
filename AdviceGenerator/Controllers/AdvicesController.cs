@@ -1,10 +1,14 @@
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
 using AdviceGenerator.Models;
-using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using System.Threading.Tasks;
+using System.Security.Claims;
+using System;
 
 
 namespace AdviceGenerator.Controllers
@@ -16,11 +20,24 @@ namespace AdviceGenerator.Controllers
       var allAdvices = Advice.GetAdvices();
       return View(allAdvices);
     }
-    // public IActionResult Search(string searchString)
-    // {
-    //   var allAdvices = Advice.GetAdvices();
-    //   var results = allAdvices.Where(a => a.Query.Contains(searchString));
-    //   return View(results);
-    // }
+    public IActionResult Search()
+    {
+      return View();
+    }
+    [HttpPost]
+    public IActionResult Search(string searchString)
+    {
+      var allReviews = Advice.SearchAdvices(searchString);
+      return RedirectToAction("Result");
+    }
+    public IActionResult Result(string searchString)
+    {
+      var searchAdvice = Advice.SearchAdvices(searchString);
+      return View(searchAdvice);
+    }
   }
 }
+
+
+
+

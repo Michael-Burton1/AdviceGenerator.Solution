@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
@@ -9,6 +10,7 @@ namespace AdviceGenerator.Models
     public JObject Contents { get; set; }
     public JArray Quotes { get; set; }
     public string Quote { get; set; }
+    public string Author { get; set; }
     public string Query { get; set; }
 
     public static Advice GetAdvices()
@@ -19,6 +21,15 @@ namespace AdviceGenerator.Models
       JObject jsonResponse = JsonConvert.DeserializeObject<JObject>(result);
       Advice adviceList = JsonConvert.DeserializeObject<Advice>(jsonResponse.ToString());
       return adviceList;
+    }
+    public static Advice SearchAdvices(string searchTerm)
+    {
+      var apiCallTask = ApiHelper.ApiSearchCall(searchTerm);
+      var result = apiCallTask.Result;
+
+      JObject jsonResponse = JsonConvert.DeserializeObject<JObject>(result);
+      Advice searchAdviceList = JsonConvert.DeserializeObject<Advice>(jsonResponse.ToString());
+      return searchAdviceList;
     }
 
     // public static Advice GetSearchableAdvices(string searchTerm, string apiKey)
@@ -31,6 +42,6 @@ namespace AdviceGenerator.Models
 
     //   return MyAdvice;
     // }
-  
+
   }
 }
