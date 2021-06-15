@@ -13,13 +13,11 @@ using System;
 
 namespace AdviceGenerator.Controllers
 {
-  public class AdvicesController : Controller
+  public class ChaosController : Controller
   {
     public IActionResult Index()
     {
-      var allAdvices = Advice.GetAdvices();
-
-      return View(allAdvices);
+      return View();
     }
     public IActionResult Search()
     {
@@ -28,13 +26,24 @@ namespace AdviceGenerator.Controllers
     [HttpPost]
     public IActionResult Search(string searchString)
     {
-      var allReviews = Advice.SearchAdvices(searchString);
+      var chaosWord = Chaos.GetChaosWord(searchString);
       return RedirectToAction("Result");
     }
     public IActionResult Result(string searchString)
     {
-      var searchAdvice = Advice.SearchAdvices(searchString);
-      return View(searchAdvice);
+      var allAdvices = Advice.SearchAdvices(searchString);
+      string quoteString = allAdvices.Contents["quotes"][0]["quote"].ToString();
+      var searchChaos = Chaos.GetChaosWord(searchString);
+      string chaosString = searchChaos[0].Word.ToString();
+      List<string> quoteList = quoteString.Split(" ").ToList();
+      foreach (String element in quoteList)
+      {
+        if (element.Contains(chaosString))
+        {
+          element.Replace(element, chaosString);
+        }
+      }
+      return View(quoteList);
     }
   }
 }
