@@ -3,4 +3,5 @@
 */appsettings.json
 */.env
 .DS_Store
-# EnvironmentVariables.cs
+*/EnvironmentVariables.cs
+EnvironmentVariables.cs
