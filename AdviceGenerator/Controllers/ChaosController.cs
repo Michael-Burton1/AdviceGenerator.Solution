@@ -26,27 +26,38 @@ namespace AdviceGenerator.Controllers
     [HttpPost]
     public IActionResult Search(string searchString)
     {
-      var chaosWord = Chaos.GetChaosWord(searchString);
       return RedirectToAction("Result");
     }
     public IActionResult Result(string searchString)
     {
-      var allAdvices = Advice.SearchAdvices(searchString);
-      string quoteString = allAdvices.Contents["quotes"][0]["quote"].ToString();
-      var searchChaos = Chaos.GetChaosWord(searchString);
-      string chaosString = searchChaos[0].Word.ToString();
-      List<string> quoteList = quoteString.Split(" ").ToList();
-      foreach (String element in quoteList)
+      try
       {
-        if (element.Contains(chaosString))
+        var allAdvices = Advice.SearchAdvices(searchString);
+        string quoteString = allAdvices.Contents["quotes"][0]["quote"].ToString();
+        var searchChaos = Chaos.GetChaosWord(searchString);
+        string chaosString = searchChaos[0].Word.ToString();
+        List<string> quoteList = quoteString.Split(" ").ToList();
+        for (int i = 0; i < quoteList.Count() - 1; i++)
         {
-          element.Replace(element, chaosString);
+          if (quoteList[i].ToLower().Contains(searchString.ToLower()))
+          {
+            Console.WriteLine(chaosString);
+            Console.WriteLine(quoteList[i]);
+            quoteList.RemoveAt(i);
+            quoteList.Insert(i, "uh, uh " + chaosString);
+          }
         }
+        return View(quoteList);
       }
-      return View(quoteList);
+      catch
+      {
+        List<string> quoteList = new List<string> { "There", "were", "uh", "uh", "nope", "there", "were", "no", "results" };
+        return View(quoteList);
+      }
     }
   }
 }
+
 
 
 

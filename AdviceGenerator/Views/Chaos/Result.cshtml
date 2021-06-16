@@ -13,7 +13,8 @@
 
 @* @ViewBag.allAdvices.Contents["quotes"][0]["quote"] *@
 
-@foreach (string item in Model)
-}
 
+@foreach (var element in Model)
 {
+  <p>@element</p>
+}
