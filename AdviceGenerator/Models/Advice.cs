@@ -26,7 +26,6 @@ namespace AdviceGenerator.Models
     {
       var apiCallTask = ApiHelper.ApiSearchCall(searchTerm);
       var result = apiCallTask.Result;
-
       JObject jsonResponse = JsonConvert.DeserializeObject<JObject>(result);
       Advice searchAdviceList = JsonConvert.DeserializeObject<Advice>(jsonResponse.ToString());
       return searchAdviceList;

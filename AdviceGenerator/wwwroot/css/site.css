@@ -6,6 +6,22 @@ a.navbar-brand {
   text-align: center;
   word-break: break-all;
 }
+#JeffOne {
+  width: 200px;
+  height: Auto;
+}
+
+.Daily {
+  background-color:#ffa822 ;
+}
+
+.Advices {
+  background-color: #757575 ;
+}
+
+.Chaos {
+  background-color: #8722bf;
+}
 
 /* Provide sufficient contrast against white background */
 a {
