@@ -22,6 +22,7 @@ namespace AdviceGenerator.Controllers
         int min = 0;
         var allAdvices = Advice.GetAdvices();
         string myQuote = allAdvices.Contents["quotes"][0]["quote"].ToString();
+        ViewBag.quoteAuthor = allAdvices.Contents["quotes"][0]["author"];
         Console.WriteLine("Full quote: " + myQuote);
         List<String> myWordList = new string(myQuote.Where(c => !char.IsPunctuation(c)).ToArray()).Split(" ").ToList();
         Console.WriteLine("Array length: " + myWordList.Count);
