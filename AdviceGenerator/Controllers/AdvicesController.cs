@@ -31,10 +31,36 @@ namespace AdviceGenerator.Controllers
       var allReviews = Advice.SearchAdvices(searchString);
       return RedirectToAction("Result");
     }
+    // public IActionResult Result(string searchString)
+    // {
+    //   var searchAdvice = Advice.SearchAdvices(searchString);
+    //   return View(searchAdvice);
+    // }
     public IActionResult Result(string searchString)
     {
-      var searchAdvice = Advice.SearchAdvices(searchString);
-      return View(searchAdvice);
+      try
+      {
+        var allAdvices = Advice.SearchAdvices(searchString);
+        string quoteString = allAdvices.Contents["quotes"][0]["quote"].ToString();
+        ViewBag.quoteAuthor = allAdvices.Contents["quotes"][0]["author"];
+        var searchChaos = Chaos.GetChaosWord(searchString);
+        string chaosString = searchChaos[0].Word.ToString();
+        List<string> quoteList = quoteString.Split(" ").ToList();
+        for (int i = 0; i < quoteList.Count(); i++)
+        {
+          if (quoteList[i].ToLower().Contains(searchString.ToLower()))
+          {
+            quoteList.RemoveAt(i);
+            quoteList.Insert(i, "um, uh " + chaosString);
+          }
+        }
+        return View(quoteList);
+      }
+      catch
+      {
+        List<string> quoteList = new List<string> { "There", "were", "uh", "uh", "nope", "there", "were", "no", "results" };
+        return View(quoteList);
+      }
     }
   }
 }

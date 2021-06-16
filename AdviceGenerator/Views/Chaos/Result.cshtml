@@ -1,2 +1,22 @@
-<p>@string.Join(" ", Model)</p>
-- @ViewBag.quoteAuthor
+<body style="background: #8722bf">
+
+  <div class="Results">
+    <br>
+    <h2>That's....um..a great..uh...question:</h2>
+    <p id="finePrint"> ........Brought to you by Appartments.com</p>
+    <hr>
+    <br>
+    <div class="container">
+      <div class="quote">
+        @string.Join(" ", Model)
+      </div>
+      <br>
+      <div class="author">
+        -@ViewBag.quoteAuthor
+      </div>
+      <div class="jeffSaid">
+        -Jeff Glodblum
+      </div>
+    </div>
+  </div>
+</body>

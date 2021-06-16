@@ -1,22 +1,22 @@
-<!-- <div class="Chaos">
-  <br>
-  <h2>Did he just throw my cat out the window?:</h2>
-  <p id="finePrint"> ...........Brought to you by Appartments.com</p>
-  <hr>
-  <br>
-  <div class="container">
-    <div class="quote">
-      -@Model.Contents["quotes"][0]["quote"] however we are returning the quote
-    </div>
+<body style="background: #8722bf">
+
+  <div class="Chaos">
     <br>
-    <div class="author">
-      -@Model.Contents["quotes"][0]["author"] however we are returning the quote author
-    </div>
-    <div class="jeffSaid">
-      -Jeff Glodblum
+    <h2>Did he just throw my cat out the window?:</h2>
+    <p id="finePrint"> ...........Brought to you by Appartments.com</p>
+    <hr>
+    <br>
+    <div class="container">
+      <div class="quote">
+        @string.Join(" ", Model)
+      </div>
+      <br>
+      <div class="author">
+        -@ViewBag.quoteAuthor
+      </div>
+      <div class="jeffSaid">
+        -Jeff Glodblum
+      </div>
     </div>
   </div>
-</div> -->
-
-@* <p>@string.Join(" ", Model)</p> *@
-@* - @ViewBag.quoteAuthor *@
+</body>

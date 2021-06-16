@@ -1,12 +1,3 @@
-<<<<<<< HEAD
-@Model.Contents["quotes"][0]["quote"]
-<br>
-- @Model.Contents["quotes"][0]["author"]
-<<<<<<< HEAD
-=======
--Jeff Goldblum
->>>>>>> main
-=======
 <body style="background: #757575">
 
   <div class="Results">
@@ -17,11 +8,11 @@
     <br>
     <div class="container">
       <div class="quote">
-        @Model.Contents["quotes"][0]["quote"] however we get our search return goes here
+        @string.Join(" ", Model)
       </div>
       <br>
       <div class="author">
-        -@Model.Contents["quotes"][0]["author"] however we get our search author goes here
+        -@ViewBag.quoteAuthor
       </div>
       <div class="jeffSaid">
         -Jeff Glodblum
@@ -29,4 +20,3 @@
     </div>
   </div>
 </body>
->>>>>>> main

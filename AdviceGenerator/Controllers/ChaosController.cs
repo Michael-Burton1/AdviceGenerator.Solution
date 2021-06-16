@@ -23,17 +23,13 @@ namespace AdviceGenerator.Controllers
         var allAdvices = Advice.GetAdvices();
         string myQuote = allAdvices.Contents["quotes"][0]["quote"].ToString();
         ViewBag.quoteAuthor = allAdvices.Contents["quotes"][0]["author"];
-        Console.WriteLine("Full quote: " + myQuote);
+        List<String> myOriginalWordList = myQuote.Split(" ").ToList();
         List<String> myWordList = new string(myQuote.Where(c => !char.IsPunctuation(c)).ToArray()).Split(" ").ToList();
-        Console.WriteLine("Array length: " + myWordList.Count);
         Double wordsToChange = Convert.ToDouble(myWordList.Count) * 0.3;
-        Console.WriteLine(wordsToChange);
         for (int i = 0; i < wordsToChange; i++)
         {
           Random _r = new Random();
           int r = _r.Next(min, myWordList.Count - 1);
-          Console.WriteLine(r);
-          Console.WriteLine("Chosen word: " + myWordList[r]);
           chaosList = Chaos.GetChaosWord(myWordList[r]);
           string _chaosWord;
           if (chaosList.Count > 1)
@@ -44,12 +40,10 @@ namespace AdviceGenerator.Controllers
           {
             _chaosWord = myWordList[r];
           }
-          Console.WriteLine("Returned word: " + _chaosWord);
-          myWordList.RemoveAt(r);
-          myWordList.Insert(r, _chaosWord);
-          Console.WriteLine(myWordList.ToString());
+          myOriginalWordList.RemoveAt(r);
+          myOriginalWordList.Insert(r, _chaosWord);
         }
-        return View(myWordList);
+        return View(myOriginalWordList);
       }
     }
     public IActionResult Search()
@@ -76,7 +70,7 @@ namespace AdviceGenerator.Controllers
           if (quoteList[i].ToLower().Contains(searchString.ToLower()))
           {
             quoteList.RemoveAt(i);
-            quoteList.Insert(i, "uh, uh " + chaosString);
+            quoteList.Insert(i, "um, uh " + chaosString);
           }
         }
         return View(quoteList);
