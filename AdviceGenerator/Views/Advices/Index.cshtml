@@ -1,7 +1,19 @@
 <div class="Advices">
   <br>
-  @Model.Contents["quotes"][0]["quote"]
+  <h2>Jeff's thought of the day:</h2>
+  <p id="finePrint"> Brought to you by Apartments.com</p>
+  <hr>
   <br>
-  -@Model.Contents["quotes"][0]["author"]
-  -Jeff Glodblum
+  <div class="container">
+    <div class="quote">
+      @Model.Contents["quotes"][0]["quote"]
+    </div>
+    <br>
+    <div class="author">
+      -@Model.Contents["quotes"][0]["author"]
+    </div>
+    <div class="jeffSaid">
+      -Jeff Goldblum
+    </div>
+  </div>
 </div>
