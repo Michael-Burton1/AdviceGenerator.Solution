@@ -15,7 +15,10 @@ a.navbar-brand {
   background-color: #ffa822;
 }
 
-.search{
+.search {
+  background-color: #757575 ;
+}
+.Results {
   background-color: #757575 ;
 }
 
@@ -26,6 +29,9 @@ a.navbar-brand {
 
 .Chaos {
   background-color: #8722bf;
+}
+.Home {
+  background-color: #5accf5;
 }
 
 .author {
@@ -41,7 +47,12 @@ a.navbar-brand {
   padding-right: 50px;
   padding-left: 50px;
 }
-
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
 #finePrint {
   font-size: 10px;
   margin-left: 170px;
@@ -108,4 +119,5 @@ body {
   width: 100%;
   white-space: nowrap;
   line-height: 60px; /* Vertically center the text there */
+  color: white;
 }

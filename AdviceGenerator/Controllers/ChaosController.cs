@@ -1,14 +1,14 @@
-using Microsoft.AspNetCore.Mvc;
-using AdviceGenerator.Models;
+// using Microsoft.AspNetCore.Mvc;
+// using AdviceGenerator.Models;
 
-namespace AdviceGenerator.Controllers
-{
-  public class ChaosController : Controller
-  {
-    public IActionResult Index()
-    {
-      //   var allArticles = Article.GetArticles("vB6ng0DLY8JZs6c2NWE4jfgFyc70spUv");
-      return View();
-    }
-  }
-}
+// namespace AdviceGenerator.Controllers
+// {
+//   public class ChaosController : Controller
+//   {
+//     public IActionResult Index()
+//     {
+//       var allAdvices = Advice.GetAdvices();
+//       return View(allAdvices);
+//     }
+//   }
+// }
