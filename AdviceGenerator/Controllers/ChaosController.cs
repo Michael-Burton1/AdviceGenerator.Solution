@@ -17,7 +17,39 @@ namespace AdviceGenerator.Controllers
   {
     public IActionResult Index()
     {
-      return View();
+      {
+        List<Chaos> chaosList = new List<Chaos>();
+        int min = 0;
+        var allAdvices = Advice.GetAdvices();
+        string myQuote = allAdvices.Contents["quotes"][0]["quote"].ToString();
+        Console.WriteLine("Full quote: " + myQuote);
+        List<String> myWordList = new string(myQuote.Where(c => !char.IsPunctuation(c)).ToArray()).Split(" ").ToList();
+        Console.WriteLine("Array length: " + myWordList.Count);
+        Double wordsToChange = Convert.ToDouble(myWordList.Count) * 0.3;
+        Console.WriteLine(wordsToChange);
+        for (int i = 0; i < wordsToChange; i++)
+        {
+          Random _r = new Random();
+          int r = _r.Next(min, myWordList.Count - 1);
+          Console.WriteLine(r);
+          Console.WriteLine("Chosen word: " + myWordList[r]);
+          chaosList = Chaos.GetChaosWord(myWordList[r]);
+          string _chaosWord;
+          if (chaosList.Count > 1)
+          {
+            _chaosWord = chaosList[_r.Next(min, chaosList.Count - 1)].Word.ToString();
+          }
+          else
+          {
+            _chaosWord = myWordList[r];
+          }
+          Console.WriteLine("Returned word: " + _chaosWord);
+          myWordList.RemoveAt(r);
+          myWordList.Insert(r, _chaosWord);
+          Console.WriteLine(myWordList.ToString());
+        }
+        return View(myWordList);
+      }
     }
     public IActionResult Search()
     {

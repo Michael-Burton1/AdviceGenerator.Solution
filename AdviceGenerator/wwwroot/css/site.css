@@ -11,18 +11,52 @@ a.navbar-brand {
   height: Auto;
 }
 
-.Daily {
-  background-color:#ffa822 ;
+.Advices{
+  background-color: #ffa822;
 }
 
-.Advices {
+.search {
   background-color: #757575 ;
+}
+.Results {
+  background-color: #757575 ;
+}
+
+.quote{
+  font-family: 'Quando', serif;
+  font-size:40px
 }
 
 .Chaos {
   background-color: #8722bf;
 }
+.Home {
+  background-color: #5accf5;
+}
 
+.author {
+  font-size: 10px;
+  text-align: right;
+  padding-right: 50px;
+  padding-left: 50px;
+}
+.jeffSaid {
+  font-size: 30px;
+  font-weight: bolder;
+  text-align: right;
+  padding-right: 50px;
+  padding-left: 50px;
+}
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+#finePrint {
+  font-size: 10px;
+  margin-left: 170px;
+}
 /* Provide sufficient contrast against white background */
 a {
   color: #0366d6;
@@ -77,6 +111,7 @@ html {
 body {
   /* Margin bottom by footer height */
   margin-bottom: 60px;
+  /* background-color:#ffa822 */
 }
 .footer {
   position: absolute;
@@ -84,4 +119,5 @@ body {
   width: 100%;
   white-space: nowrap;
   line-height: 60px; /* Vertically center the text there */
+  color: white;
 }
