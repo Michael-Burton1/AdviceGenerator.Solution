@@ -37,12 +37,10 @@ namespace AdviceGenerator.Controllers
         var searchChaos = Chaos.GetChaosWord(searchString);
         string chaosString = searchChaos[0].Word.ToString();
         List<string> quoteList = quoteString.Split(" ").ToList();
-        for (int i = 0; i < quoteList.Count() - 1; i++)
+        for (int i = 0; i < quoteList.Count(); i++)
         {
           if (quoteList[i].ToLower().Contains(searchString.ToLower()))
           {
-            Console.WriteLine(chaosString);
-            Console.WriteLine(quoteList[i]);
             quoteList.RemoveAt(i);
             quoteList.Insert(i, "uh, uh " + chaosString);
           }
