@@ -34,6 +34,7 @@ namespace AdviceGenerator.Controllers
       {
         var allAdvices = Advice.SearchAdvices(searchString);
         string quoteString = allAdvices.Contents["quotes"][0]["quote"].ToString();
+        ViewBag.quoteAuthor = allAdvices.Contents["quotes"][0]["author"];
         var searchChaos = Chaos.GetChaosWord(searchString);
         string chaosString = searchChaos[0].Word.ToString();
         List<string> quoteList = quoteString.Split(" ").ToList();
