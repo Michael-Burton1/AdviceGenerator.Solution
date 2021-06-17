@@ -25,23 +25,39 @@ namespace AdviceGenerator.Controllers
         ViewBag.quoteAuthor = allAdvices.Contents["quotes"][0]["author"];
         List<String> myOriginalWordList = myQuote.Split(" ").ToList();
         List<String> myWordList = new string(myQuote.Where(c => !char.IsPunctuation(c)).ToArray()).Split(" ").ToList();
-        Double wordsToChange = Convert.ToDouble(myWordList.Count) * 0.3;
+        Double wordsToChange = Convert.ToDouble(myWordList.Count) * 0.2;
         for (int i = 0; i < wordsToChange; i++)
         {
           Random _r = new Random();
           int r = _r.Next(min, myWordList.Count - 1);
           chaosList = Chaos.GetChaosWord(myWordList[r]);
           string _chaosWord;
-          if (chaosList.Count > 1)
-          {
-            _chaosWord = chaosList[_r.Next(min, chaosList.Count - 1)].Word.ToString();
-          }
-          else
+          if (chaosList.Count == 0)
           {
             _chaosWord = myWordList[r];
           }
+          else
+          {
+            _chaosWord = chaosList[0].Word.ToString();
+          }
           myOriginalWordList.RemoveAt(r);
-          myOriginalWordList.Insert(r, _chaosWord);
+          int uh = _r.Next(1, 10);
+          if (uh > 4)
+          {
+            myOriginalWordList.Insert(r, _chaosWord);
+          }
+          else if (uh == 3)
+          {
+            myOriginalWordList.Insert(r, "uh, um " + _chaosWord);
+          }
+          else if (uh == 2)
+          {
+            myOriginalWordList.Insert(r, "uhh..." + _chaosWord);
+          }
+          else if (uh == 1)
+          {
+            myOriginalWordList.Insert(r, "uh, uh " + _chaosWord);
+          }
         }
         return View(myOriginalWordList);
       }

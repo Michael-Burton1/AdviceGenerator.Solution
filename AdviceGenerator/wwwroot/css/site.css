@@ -53,9 +53,29 @@ a.navbar-brand {
   margin-right: auto;
   width: 50%;
 }
+#resultTitle {
+  text-align: left;
+}
 #finePrint {
   font-size: 10px;
   margin-left: 170px;
+}
+#finePrintSplash {
+  font-size: 10px;
+  margin-left: 170px;
+  text-align: right;
+}
+#finePrintResult {
+  font-size: 10px;
+  margin-left: 170px;
+  text-align: center;
+}
+#splashTag {
+  text-align: right;
+}
+#splashQuote {
+  text-align: Center;
+  font-family: Quando;
 }
 /* Provide sufficient contrast against white background */
 a {
