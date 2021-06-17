@@ -29,7 +29,7 @@ This application will allow users to be presented with a random thought, a curat
         {
             public static class EnvironmentVariables
             {
-                public static string ApiKey = "[YOUR-API-KEY-HERE]";
+                public static string ApiKeyQuote = "[YOUR-API-KEY-HERE]";
             }
         } 
         ```
