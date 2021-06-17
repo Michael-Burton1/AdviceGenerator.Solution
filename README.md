@@ -29,7 +29,7 @@ This application will allow users to be presented with a random thought, a curat
         {
             public static class EnvironmentVariables
             {
-                public static string ApiKeyQuote = "[YOUR-API-KEY-HERE]";
+                public static string ApiKey = "[YOUR-API-KEY-HERE]";
             }
         } 
         ```
@@ -37,7 +37,7 @@ This application will allow users to be presented with a random thought, a curat
     * Run the command `dotnet build` to build the project and its dependencies into a set of binaries
     * Finally, run the command `dotnet run` to run the project!
     * Note: `dotnet run` also restores and builds the project, so you can use this single command to start the app
-    * View the application via your preferred web browser by visiting `localhost:5000/`
+    * View the application via your preferred web browser by visiting `localhost:5003/`
 
 
 ## Known Bugs
