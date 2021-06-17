@@ -28,14 +28,8 @@ namespace AdviceGenerator.Controllers
     [HttpPost]
     public IActionResult Search(string searchString)
     {
-      var allReviews = Advice.SearchAdvices(searchString);
       return RedirectToAction("Result");
     }
-    // public IActionResult Result(string searchString)
-    // {
-    //   var searchAdvice = Advice.SearchAdvices(searchString);
-    //   return View(searchAdvice);
-    // }
     public IActionResult Result(string searchString)
     {
       try
@@ -48,7 +42,7 @@ namespace AdviceGenerator.Controllers
         List<string> quoteList = quoteString.Split(" ").ToList();
         for (int i = 0; i < quoteList.Count(); i++)
         {
-          if (quoteList[i].ToLower().Contains(searchString.ToLower()))
+          if (quoteList[i].ToLower().Contains(searchString.ToLower()) || quoteList[i].ToLower() == searchString.ToLower())
           {
             quoteList.RemoveAt(i);
             quoteList.Insert(i, "um, uh " + chaosString);
@@ -58,7 +52,7 @@ namespace AdviceGenerator.Controllers
       }
       catch
       {
-        List<string> quoteList = new List<string> { "There", "were", "uh", "uh", "nope", "there", "were", "no", "results" };
+        List<string> quoteList = new List<string> { "There", "were", "uh..", "uh", "nope,", "there", "were", "no", "results." };
         return View(quoteList);
       }
     }
